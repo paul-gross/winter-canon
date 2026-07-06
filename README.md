@@ -7,7 +7,7 @@ These are the rules and governance for agent-facing context. They hold whether t
 ## ✨ What's here
 
 - **Authoring & organization law** — how any agent-facing markdown file is written, placed, and split so a cold agent finds the one fact it needs: cross-cutting authoring principles (`principles.md`), progressive disclosure (`progressive-disclosure.md`), and placement/admission rules (`organization.md`).
-- **Harness-design law** — what makes a harness extensible by agents and how its parts divide: the facts-vs-methodology seam (`facts-vs-methodology.md`), the four levers of agent productivity (`four-levers.md`), the required verifiability matrix (`verifiability-matrix.md`) and architecture guidance (`architecture-guidance.md`), and the cold-spawn behavioral eval for harness changes (`evaluating-harness-changes.md`).
+- **Harness-design law** — what makes a harness extensible by agents and how its parts divide: the standard domains a harness organizes into and when each is read (`harness-structure.md`), the facts-vs-methodology seam (`facts-vs-methodology.md`), the four levers of agent productivity (`four-levers.md`), the required verifiability matrix (`verifiability-matrix.md`) and architecture guidance (`architecture-guidance.md`), and the cold-spawn behavioral eval for harness changes (`evaluating-harness-changes.md`).
 
 See [`index.md`](./index.md) for the routing table.
 
