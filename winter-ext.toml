@@ -1,0 +1,8 @@
+name = "winter-canon"
+prefix = "wc"
+
+# winter-canon is the bottom governance layer: the universal harness conventions
+# every other module and consuming harness builds on. It depends on nothing, so
+# it declares no `requires` — any reference *to* winter-canon keeps it strictly
+# below its referrer. Its conventions are addressed via the `winter-canon:` path
+# notation (e.g. `winter-canon:/principles.md`).
