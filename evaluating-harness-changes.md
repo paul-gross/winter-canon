@@ -1,4 +1,4 @@
-# Evaluating harness changes
+# Evaluating harness changes (`canon:cold-eval`)
 
 Pre-push eval for a harness change: declare the behavioral expectations the change makes, then test each one with a cold agent that has only the discovery chain.
 A scenario fails in one of two places — the agent never reached the context, or it reached it and still didn't behave — and each failure points at a different fix.
@@ -15,10 +15,8 @@ Failing either means the change isn't ready to ship.
 
 ## Why
 
-Context only earns its keep when a future agent, cold in a real task, both finds it and acts on it.
-The cold spawn is the mechanism that tests both at once: a fresh agent with only the discovery chain proves whether the context is reachable (the chain delivered it) and whether the content lands (the body earned the behavior) in a single pass.
-A warm agent already holds the change in context, so it proves neither — it would behave correctly from the in-session memory of the edit, not from the chain a production agent traverses.
-Warm spawns are disallowed.
+Context earns its keep only when a future agent, cold in a real task, both finds it and acts on it — and the cold spawn tests both at once, because a fresh agent has exactly what a production agent gets: the discovery chain.
+A warm agent proves neither — it behaves from in-session memory of the edit, not from the chain — so warm spawns are disallowed.
 
 ## The scenario shape
 
@@ -148,5 +146,5 @@ Note the run count and the tally alongside the change so the next author knows t
 
 ## See also
 
-- [`./principles.md`](./principles.md) §"No retrospective framing" — concrete precedent: an enforcement rule whose efficacy depends on a paired reviewer surfacing the anti-pattern from fresh text.
+- `canon:no-retro` in [`./principles.md`](./principles.md) — concrete precedent: an enforcement rule whose efficacy depends on a paired reviewer surfacing the anti-pattern from fresh text.
 - [`./index.md`](./index.md) — the discovery chain a cold agent traverses to reach a leaf convention.

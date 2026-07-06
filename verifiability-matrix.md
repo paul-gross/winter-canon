@@ -1,4 +1,4 @@
-# The verifiability matrix
+# The verifiability matrix (`canon:verifiability-matrix`)
 
 The **verifiability matrix** is a harness doc that inventories the verification methods available for an application — the concrete ways a skill or agent may verify work against it.
 Canon governs its shape and requires its presence; the content belongs to the application's own harness.
@@ -42,10 +42,12 @@ Things an agent uses to manipulate state and stand up the scenario a verificatio
 
 ## Why
 
-The matrix gives agents the verification methods available to them, so they know which tools to use rather than improvising or assuming none exists.
-It lets an agent plan work knowing how the change will be verified — or, when no method covers it, knowing it must first build the mechanism to verify it.
-The application maintains those methods in one authoritative place, so an agent reads the current set from there, and every agent picks up new methods as the application's verification surface grows.
-The scoped method id is what makes that reference precise: a plan names `api:unit-test`, and the matrix resolves it to the exact command — rather than a bare `unit-test` an agent must guess the component for.
+The matrix is how an agent knows which verification methods exist — and so how it plans work already knowing how the change will be proven, or that the proof mechanism must be built first.
+The scoped method id is what makes a plan's reference precise: `api:unit-test` resolves to an exact command, where a bare `unit-test` leaves the component to guesswork.
+
+## Detect
+
+A harness index with no verifiability-matrix row; verification commands embedded in a skill or workflow prompt; matrix rows for aspirational methods that don't exist yet; a scoped method cited without its scope.
 
 ## Do
 

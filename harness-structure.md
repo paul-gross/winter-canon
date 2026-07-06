@@ -1,4 +1,4 @@
-# The shape of a harness
+# The shape of a harness (`canon:harness-structure`)
 
 The standard domains a harness organizes its conventions into, and the lifecycle phase that reaches for each.
 A harness carries these domains so an agent can predict where a fact lives from the task it is doing.
@@ -23,9 +23,12 @@ A harness may carry more domains than these, but a missing one from the set is a
 
 ## Why
 
-An agent reaches for a fact by the phase it is in: a planner needs intent and structure, a reviewer needs conformance and correctness, a verifier needs proof.
-A stable domain map means every planner reads `domain/` and `architecture/`, every reviewer reads `standards/` and `domain/`, every verifier reads `verification/` — without inspecting the tree to learn where each harness put things.
-Without the shared shape, each harness invents its own layout, conventions scatter or duplicate across ad-hoc directories, and an agent cannot predict from its task where the fact it needs lives.
+An agent reaches for a fact by the phase it is in — a planner needs intent and structure, a reviewer conformance, a verifier proof — and a stable domain map lets it predict from its task where any harness put the fact, without inspecting the tree.
+Without the shared shape, each harness invents its own layout and conventions scatter or duplicate across ad-hoc directories.
+
+## Detect
+
+Conventions living in ad-hoc directories no domain claims; design invariants filed under `standards/` or code standards under `architecture/`; business-model facts stated only inside technical design docs; an expected domain absent with no named gap.
 
 ## Do
 
@@ -44,5 +47,5 @@ Without the shared shape, each harness invents its own layout, conventions scatt
 
 - [`./architecture-guidance.md`](./architecture-guidance.md) — the deeper expectation for the `architecture/` domain: the guidance doc a harness carries and that its absence is a gap.
 - [`./verifiability-matrix.md`](./verifiability-matrix.md) — the deeper expectation for the `verification/` domain: the matrix's shape and what each row declares.
-- [`./organization.md`](./organization.md) §"Make directory names and layer descriptions truthful" — the placement rule each domain directory is held to.
+- `canon:truthful-names` in [`./organization.md`](./organization.md) — the placement rule each domain directory is held to.
 - [`./facts-vs-methodology.md`](./facts-vs-methodology.md) — why the content of these domains is *facts* that live in the harness, while the workflow that reads them across phases is *methodology* that lives with the skill.

@@ -1,4 +1,4 @@
-# Facts in the harness, methodology in the workflow
+# Facts in the harness, methodology in the workflow (`canon:facts-vs-methodology`)
 
 When you build an agentic feature — a reviewer agent, a review skill, a context doc, a new harness convention — the **facts** it acts on and the **methodology** it applies belong in different places, and must not be conflated. This is the rule that keeps them apart.
 
@@ -12,9 +12,11 @@ When you build an agentic feature — a reviewer agent, a review skill, a contex
 
 ## Why
 
-A reviewer with the project's invariants baked into its prompt is a fork waiting to happen. Swap the workflow and the facts leave with it; change the project and the reviewer silently reviews against stale criteria. Keeping facts in the harness makes it the single source of truth for *what is true*, and keeps the workflow a swappable opinion about *how to act on it* — so a consumer can replace the entire workflow and still inherit every fact, and a project can evolve its invariants in one place and have every reviewer pick them up on the next run.
+A reviewer with the project's invariants baked into its prompt reviews against stale criteria the moment the project changes, and the facts now live in two places. Kept apart, the harness is the single source of *what is true* and the workflow a swappable opinion about *how to act on it* — dependency inversion across the seam: the reviewer depends on the abstraction (read what the harness publishes), never on a copy of today's facts.
 
-This is dependency inversion across the harness/workflow seam: the reviewer depends on the *abstraction* (read whatever facts the harness and target publish), never on a *copy* of today's facts.
+## Detect
+
+A reviewer or skill prompt carrying domain facts inline — naming conventions, architectural invariants, a catalog of components — rather than instructions to read them from the harness and the target. The tell is a list inside the prompt that will rot when the project changes.
 
 ## Do
 

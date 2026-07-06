@@ -1,4 +1,4 @@
-# The four levers
+# The four levers (`canon:four-levers`)
 
 The Canon names **four levers** of agent productivity: **observability**, **testability**, **discoverability**, and **pluggability**.
 A system an agent can see into, verify, navigate, and swap parts of is a system an agent can extend.

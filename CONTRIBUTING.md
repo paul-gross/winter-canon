@@ -8,7 +8,7 @@ A convention earns a place in the canon only if it is true of *every* harness, i
 
 ## Voice and shape
 
-Each convention follows a `Rule` / `Why` / `Do` / `Don't` / `See also` skeleton, in a terse, code-first voice. Read [`principles.md`](./principles.md) before editing any convention here — it owns the authoring rules this repo holds itself to. Match the shape of the closest existing sibling.
+Each convention follows the slot skeleton, stable-id scheme, and file-kind exemptions owned by [`rule-shape.md`](./rule-shape.md) (`canon:rule-shape`), in a terse, code-first voice. Read it and [`principles.md`](./principles.md) — the authoring rules this repo holds itself to — before editing any convention here. Match the shape of the closest existing sibling.
 
 The index (`index.md`) is a router: every row states *when to read* the target, never *what is inside* it. Adding, moving, or removing a convention file updates the index row in the same change.
 

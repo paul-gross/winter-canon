@@ -1,4 +1,4 @@
-# Architecture guidance
+# Architecture guidance (`canon:architecture-guidance`)
 
 **Architecture guidance** is a harness doc that describes an application's structural invariants, design decisions, and the constraints a change must honor.
 A harness is expected to carry it.
@@ -11,9 +11,12 @@ Its absence is a gap: a planner without it must infer structure from code, and a
 
 ## Why
 
-Architecture guidance gives planning and review a stable, single-owned reference.
-Without it, every planner infers the architecture independently, every reviewer applies their own heuristic, and neither flags a contradiction because they have no documented invariant to contradict.
-With it, the invariants are a fact the application maintains in one place and every planner and reviewer reads from there — evolve the guidance and every future plan and review picks it up.
+Without a documented invariant, every planner infers the architecture independently and no reviewer can flag a contradiction, because there is nothing to contradict.
+With one, the constraints live in a single maintained place and every future plan and review picks them up.
+
+## Detect
+
+A harness index with no architecture-guidance row; structural constraints embedded in a planner or reviewer prompt instead of the guidance doc.
 
 ## Do
 

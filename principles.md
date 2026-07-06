@@ -2,19 +2,19 @@
 
 Cross-cutting principles that apply to every agent-facing markdown file in any agentic harness — READMEs, extension `index.md`, skills, agents, `CLAUDE.md`, `context/` convention docs. Principles that apply to one specific file shape live in a per-shape convention file in the consuming harness (e.g. a `writing-readme.md` or `writing-skill.md`) and are not duplicated here.
 
-Each principle follows a `Rule` / `Why` / `Do` / `Don't` shape.
+Each rule follows the slot skeleton owned by [`./rule-shape.md`](./rule-shape.md) (`canon:rule-shape`).
 
-## No retrospective framing
+## No retrospective framing (`canon:no-retro`)
 
 **Rule.** Don't anchor current-state explanations to prior versions of the same doc, the prior shape of the code it describes, or the change history that produced today's state. State the current rule and the forward-looking reason behind it.
 
-Phrases the pattern wears: *"earlier drafts..."*, *"previously this was..."*, *"we used to..."*, *"the old approach was Z, but..."*, *"this used to be X"*. When the draft reaches for one of these, the rewrite is to delete the historical clause and keep the forward-looking reason underneath.
+Superseded behavior, before/after examples, upgrade steps, and breaking-change narratives are not rewritten in place — they move to a changelog or an explicitly named migration document, linked from the current page only while an active migration still needs the reader to find it. When no active migration needs it, the dead history is deleted outright: a reference page carries the present, and the commit history already carries the past.
 
-**Why.** A doc that says *"earlier drafts delegated to X, which silently broke"* is loaded into every future agent context, where it pays token rent to describe a version of the doc no reader will ever see. The reader needs the current rule and the reason it exists today; the historical clause is dead weight. Change history belongs in commit messages and PR descriptions — different audience, different lifetime.
+**Why.** A historical clause is loaded into every future agent context to describe a version of the doc no reader will ever see. Change history belongs in commit messages and PR descriptions — different audience, different lifetime.
 
 **Exception.** History-by-design files keep their framing — `CHANGELOG.md`, `retrospective.md`, migration notes, post-mortem reports. There the change history *is* the content.
 
-**Where superseded history goes.** The framing rule has a placement complement: a current reference page describes only the supported present and its forward-looking rationale. Superseded behavior, before/after examples, upgrade steps, and breaking-change narratives are not rewritten in place — they move to a changelog or an explicitly named migration document, and the current page links there only while an active migration still needs the reader to find it. When no active migration needs it, the dead history is deleted outright, not relocated to preserve it: a reference page carries the present, and the commit history already carries the past.
+**Detect.** Grep for the phrases the pattern wears: *"earlier drafts"*, *"previously"*, *"we used to"*, *"the old approach"*, *"this used to be"*, *"no longer"*. The fix is always the same: delete the historical clause and keep the forward-looking reason underneath.
 
 **Do.**
 
@@ -32,11 +32,13 @@ State the rule, then the forward-looking reason.
 
 Each frames the current state as a correction to an invisible prior version. Strip the historical clause; what remains is the convention.
 
-## No manual line wrapping
+## No manual line wrapping (`canon:no-hard-wrap`)
 
 **Rule.** Don't hard-wrap prose. Put one sentence or one paragraph per physical line and let the editor and renderer soft-wrap it; never reflow prose to a fixed column. Scope is prose only — code fences, tables, and YAML metadata blocks keep their own formatting and are exempt.
 
-**Why.** Hard-wrapping makes a one-word edit reflow every line below it in the paragraph, so the diff buries the real change in reflow churn and the reviewer can't see what actually moved. One sentence per line keeps each edit localized to the line it touches — the diff shows exactly the words that changed, and reviews stay legible.
+**Why.** Hard-wrapping makes a one-word edit reflow every line below it, burying the real change in reflow churn. One sentence per line keeps each edit localized to the line it touches.
+
+**Detect.** Prose paragraphs whose physical lines break mid-sentence at a consistent column — lines ending on an unpunctuated word with the sentence continuing on the next line.
 
 **Do.**
 
@@ -59,11 +61,13 @@ line beneath it.
 
 Prose reflowed to a fixed column — a one-word edit churns every wrapped line below it.
 
-## One canonical owner per fact
+## One canonical owner per fact (`canon:one-owner`)
 
 **Rule.** Every behavioral rule, schema field, default, protocol requirement, or operational invariant has exactly one authoritative document — its canonical owner. Any other document that needs the fact links to the owner and may state *why* the reader should follow the link, but never restates the detail. When two files describe the same fact, exactly one is canonical and the rest are pointers; "for convenience" is not a second owner.
 
-**Why.** A fact written in two places is a fact that will be edited in one. The unedited copy keeps asserting the superseded value, and nothing flags the divergence until a reader follows the stale copy and acts on it. Single ownership makes the canonical value the only value: every reader resolves to the same place, and an edit there reaches all of them at once. Which document *is* the owner follows the reader's task — see [`./organization.md`](./organization.md) §"Classify content by the reader's task".
+**Why.** A fact written in two places is a fact that will be edited in one — the stale copy keeps asserting the superseded value until a reader acts on it. Which document *is* the owner follows the reader's task — see `canon:by-reader-task` in [`./organization.md`](./organization.md).
+
+**Detect.** The same table, option list, default set, or contract clause appearing in two files with neither reduced to a pointer — searching a distinctive literal (a field name, a default value, a flag) turns up two prose owners. The fix names one file canonical and reduces the rest to pointers.
 
 **Do.**
 
@@ -75,15 +79,15 @@ Prose reflowed to a fixed column — a one-word edit churns every wrapped line b
 - Repeat a table, option list, default set, or contract clause in a second file so a reader "doesn't have to follow the link" — the convenience lasts until the first edit, then the copy lies.
 - Leave two files each describing the schema with neither marked as the owner, so the next editor changes whichever they happened to open.
 
-**For reviewers.** Flag repeated tables, option lists, defaults, contract wording, and exhaustive summaries; identify which file remains canonical and reduce the rest to pointers.
+## Point, don't duplicate (`canon:point-dont-duplicate`)
 
-## Point, don't duplicate
-
-The reference-shape corollary of one-canonical-owner: that rule says a fact lives in one place; this one says what the *other* places may say about it.
+The reference-shape corollary of `canon:one-owner`: that rule says a fact lives in one place; this one says what the *other* places may say about it.
 
 **Rule.** When one agent-facing doc points at another file or section — an index or "when to read" table row, a `CLAUDE.md` navigation entry, an extension `index.md` line, a cross-reference — describe the target by what the reader gets there or when to go, not by enumerating or copying its contents. A pointer that restates its target's contents is a second copy of them, and the copy drifts the moment the target changes.
 
-**Why.** Duplicated contents rot silently. An index row that lists the rules inside the file it points at keeps asserting the old list after a rule is added or renamed, and nothing flags the staleness until a reader follows the link and hits the mismatch. A pointer written as an outcome — "read before authoring an agent-facing file" — stays true across every edit to the target, and the reader follows the link for the current detail, which lives in exactly one place.
+**Why.** A pointer written as a read-trigger — "read before authoring an agent-facing file" — stays true across every edit to the target; a contents description silently drifts the moment the target changes, and reads as complete long after it isn't.
+
+**Detect.** A pointer whose description enumerates the target's sections, rules, or options — a noun list that must be re-synced by hand when the target changes — instead of naming when to go or what the reader gets there.
 
 **Do.**
 
@@ -99,11 +103,13 @@ Describe the destination; let the reader follow the link for the contents.
 
 The enumerated list reads as complete, so the next author trusts it instead of the target — and it is wrong the first time the target changes.
 
-## Examples are illustrative, not normative
+## Examples are illustrative, not normative (`canon:minimal-examples`)
 
 **Rule.** An example shows the smallest surface that makes the canonical rule concrete. It never reproduces a whole schema, template, exhaustive option set, or second specification already owned elsewhere. If an example would have to change every time the canonical contract changes, it is too big: cut it to the part that illustrates the point and link to the owner for the rest.
 
-**Why.** A full-schema "example" is a second copy of the schema wearing an example's clothes. It drifts from its canonical owner exactly like any other duplicate (the one-canonical-owner rule), but the word "example" disguises the duplication so a reviewer waves it through and the field list now lives in two places. A minimal example carries no contract of its own — there is nothing in it to keep in sync.
+**Why.** A full-schema "example" is a second copy of the schema wearing an example's clothes — the word "example" disguises the duplication, and it drifts like any other copy (`canon:one-owner`). A minimal example carries no contract of its own; there is nothing in it to keep in sync.
+
+**Detect.** Ask of each example: would it have to change if the canonical contract changed? An example reproducing every field of a schema owned elsewhere is a disguised duplicate, not an illustration.
 
 **Do.**
 
@@ -113,5 +119,3 @@ The enumerated list reads as complete, so the next author trusts it instead of t
 **Don't.**
 
 - Paste an entire manifest block with every field "as an example" into a file that does not own the schema — the field list is now duplicated, and it is wrong the first time the schema changes.
-
-**For reviewers.** Flag an example that must be synchronized whenever the canonical contract changes; it is a disguised duplicate, not an illustration.
