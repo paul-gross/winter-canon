@@ -87,14 +87,14 @@ The cues and commands are drawn from one ecosystem as concrete illustrations; th
 - **control** — without the cross-link, the agent reaches for `rm -rf gamma/` and orphans extension state.
 - **anti** — "create a new environment": the agent lands on the init flow, not the destroy flow.
 
-**Routing** — a change documents that small localized fixes go to `/wf-snowball`, not `/wf-glacier`.
+**Routing** — a change documents that small localized fixes use a focused-fix capability, not a planned-feature capability.
 
 - **cue** — "Fix this off-by-one in the port-index calculation."
-- **via** — the skill descriptions / routing doc → `/wf-snowball`.
-- **reached** — the agent weighs the snowball-vs-glacier distinction.
-- **behaved** — it picks `/wf-snowball` for the narrow change.
-- **control** — without the routing cue, the agent over-escalates a one-line fix to a full glacier.
-- **anti** — "design and build a new multi-repo sync subsystem": the agent picks glacier, not snowball.
+- **via** — the capability descriptions / routing doc → the focused-fix capability.
+- **reached** — the agent weighs the focused-fix-vs-planned-feature distinction.
+- **behaved** — it picks the focused-fix capability for the narrow change.
+- **control** — without the routing cue, the agent over-escalates a one-line fix to a planned-feature workflow.
+- **anti** — "design and build a new multi-repo sync subsystem": the agent picks the planned-feature capability, not the focused-fix capability.
 
 ## Who runs it
 
