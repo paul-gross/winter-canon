@@ -1,49 +1,51 @@
 # Facts in the harness, methodology in the workflow (`canon:facts-vs-methodology`)
 
-When you build an agentic feature — a reviewer agent, a review skill, a context doc, a new harness convention — the **facts** it acts on and the **methodology** it applies belong in different places, and must not be conflated. This is the rule that keeps them apart.
+When you build an agentic feature — a reviewer agent, a review skill, a context doc, a new harness convention — the **facts** it acts on and the **methodology** it applies belong to different products, and must not be conflated. This is the rule that keeps them apart.
 
 ## Rule
 
-- **Facts and invariants live in the harness.** What must be true of the code or docs under review — the conventions, patterns, practices, and invariants a change has to honor — is a *fact*. It lives in a harness doc: a **shared harness** for facts common across projects, or the **target project's own harness** for invariants that only make sense inside that project.
-- **Methodology lives in the workflow.** How a particular workflow conducts a review — which agents it spawns, cold vs. warm, what it sequences, how it categorizes findings — is *methodology*. It is one team's swappable opinion and lives with the reviewer (the agent/skill), not in the harness.
-- **Reviewers derive criteria; they do not embed them.** A reviewer is built to **read** the harness and the target project, discover the invariants and patterns that apply, and review against those. It must not hard-code domain criteria into its own prompt.
-- **Domain-specific invariants stay in the target.** An invariant that only makes sense within the thing under review belongs in that target's harness, reached by reading the target — not carried as a copy inside the reviewer.
-- **Generic methodology criteria may live in the workflow.** Cross-project review opinions a workflow always applies (report cold, categorize `must-fix` / `consider`, output shape) are methodology and may live with the reviewer. Anything domain-specific does not.
+Put facts and invariants in the harness that can keep them true, and put methodology in the workflow product that defines the operation.
+
+- **Keep target facts with the target.** What must be true of the code or docs under review — the conventions, patterns, practices, and invariants a change has to honor — is a *fact*. It lives in a shared harness for facts common across targets, or the target's own harness for invariants that only make sense there.
+- **Give reusable methodology a caller-neutral owner.** How a workflow conducts an operation — what it sequences, which roles it uses, and how it reports — is one team's swappable opinion. When a concrete second executor with different invocation or runtime semantics could plausibly perform the same steps from the same inputs, the workflow product owns one shared method and each executor adapts it.
+- **Keep one-executor methodology self-contained.** When no plausible second executor exists, the skill or agent whose runtime semantics define the operation may own the method directly. Do not extract a shared core for a hypothetical caller with no credible use.
+- **Derive criteria instead of embedding them.** A reusable reviewer reads the harness and target, discovers the invariants and patterns that apply, and reviews against those. It must not hard-code target criteria into its method or adapter.
 
 ## Why
 
-A reviewer with the project's invariants baked into its prompt reviews against stale criteria the moment the project changes, and the facts now live in two places. Kept apart, the harness is the single source of *what is true* and the workflow a swappable opinion about *how to act on it* — dependency inversion across the seam: the reviewer depends on the abstraction (read what the harness publishes), never on a copy of today's facts.
+A reviewer with the target's invariants baked into its method reviews against stale criteria the moment the target changes, and a method copied across executors drifts for the same reason. Kept apart, the harness is the single source of *what is true*, the workflow product owns *how to act on it*, and runtime adapters own only what differs at invocation.
 
 ## Detect
 
-A reviewer or skill prompt carrying domain facts inline — naming conventions, architectural invariants, a catalog of components — rather than instructions to read them from the harness and the target. The tell is a list inside the prompt that will rot when the project changes.
+- A reviewer or skill prompt carrying target facts inline — naming conventions, architectural invariants, a catalog of components — rather than instructions to read them from the harness and target.
+- The same semantic procedure copied into a skill and an agent even though both receive equivalent inputs and produce the same result.
+- A shared method extracted from a self-contained executor without a concrete second invocation or runtime that could use it.
 
 ## Do
 
-The workflow's documentation-review skill reads a shared harness and the target project's own conventions, then reviews the target against them:
+Two executors depend on one workflow-owned review method, which reads the target's conventions at runtime:
 
-```markdown
-## Execute
-Spawn `documentation-reviewer` cold against <target>. Instruct it to read the
-governing facts — a shared harness plus the target project's own
-harness/conventions — and report violations against what it finds there.
+```text
+review skill -----\
+                  > shared review method ---> target harness
+review agent -----/
 ```
 
-The facts (`governance.md`, `writing-readme.md`, the target's invariants) live in the harness. The skill supplies only methodology: cold spawn, scope, output format.
+The workflow product owns the shared method; the skill and agent own their invocation-specific adaptation. If only the skill could plausibly execute the operation, the skill would keep the method self-contained instead.
 
 ## Don't
 
-A reviewer prompt that pastes the project's invariants inline and reviews against that copy:
+A reviewer prompt that pastes the target's invariants inline and reviews against that copy:
 
 ```markdown
-You are the doc reviewer. Enforce these naming rules:           ← domain facts copied into the reviewer
+You are the doc reviewer. Enforce these naming rules:           ← target facts copied into the reviewer
 - skills are named <verb>-<noun>
 - every index.md must have a Scope section
-- the catalog lists winter-product, winter-service-tmux, ...     ← will rot the moment the project changes
+- the catalog lists component-a, component-b, ...               ← will rot when the target changes
 Review the target against the list above.
 ```
 
-The facts now live in two places and drift; the reviewer cannot be reused against a project with different facts. Move the list into the relevant harness and have the reviewer read it.
+The facts now live in two places and drift; the reviewer cannot be reused against a target with different facts. Move the list into the relevant harness and have the reviewer read it.
 
 ## See also
 
