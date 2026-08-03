@@ -19,7 +19,7 @@ Each domain is a top-level directory named for the subject it governs, fronted b
 ## Rule
 
 A harness organizes its conventions into this standard set of domains, each a directory named for its subject and reached by a specific reader task and lifecycle phase.
-A harness may carry more domains than these, but a missing one from the set is a gap to name, the same as an absent verifiability matrix or architecture guidance — not a silent omission.
+A harness may carry more domains than these, but a missing one from the set is a gap to name, the same as an absent verifiability matrix, architecture guidance, or gardening-axes registry — not a silent omission.
 
 ## Why
 

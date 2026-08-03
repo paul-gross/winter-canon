@@ -66,4 +66,4 @@ A harness index with no verifiability-matrix row; verification commands embedded
 ## See also
 
 - [`./facts-vs-methodology.md`](./facts-vs-methodology.md) — the governing principle: verification methods are facts about the application and belong in the harness; how a skill runs them is methodology and belongs with the skill.
-- [`./architecture-guidance.md`](./architecture-guidance.md) — the paired expectation: a harness also carries architecture guidance for planning and plan-review.
+- [`./architecture-guidance.md`](./architecture-guidance.md) and [`./gardening-axes.md`](./gardening-axes.md) — the sibling required-component expectations: a harness also carries architecture guidance and a gardening-axes registry.

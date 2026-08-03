@@ -32,4 +32,4 @@ A harness index with no architecture-guidance row; structural constraints embedd
 ## See also
 
 - [`./facts-vs-methodology.md`](./facts-vs-methodology.md) — the governing principle: architectural invariants are facts and live in the harness; how a planner drafts or a reviewer sequences is methodology and lives with the skill.
-- [`./verifiability-matrix.md`](./verifiability-matrix.md) — the paired expectation: a harness also declares a verifiability matrix.
+- [`./verifiability-matrix.md`](./verifiability-matrix.md) and [`./gardening-axes.md`](./gardening-axes.md) — the sibling required-component expectations: a harness also declares a verifiability matrix and a gardening-axes registry.
