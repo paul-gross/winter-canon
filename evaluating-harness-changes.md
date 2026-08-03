@@ -37,7 +37,7 @@ Report each scenario as the two verdicts, never collapsed into one pass/fail —
 | reached? | behaved? | Diagnosis | Fix |
 |----------|----------|-----------|-----|
 | no | — | The chain didn't deliver the context: discoverability / progressive-disclosure defect | Fix the index row, the doc name, or the cross-links on the `via` path — leave the body alone |
-| yes | no | The agent read the doc and still didn't act: content defect | Fix the body — sharpen the rule, the example, or the imperative; the discovery chain is fine |
+| yes | no | The agent read the doc and still didn't act: content defect | Fix the body — sharpen the rule, the example, or the imperative; the discovery chain is fine. When the missed behavior is write-time conformance to a standard, `canon:enforcement-channels` owns the fix: repair the pattern pool or add a gate instead of sharpening prose |
 | yes | yes | Pass | — |
 | no | yes | The agent behaved without the context, so the change may not earn its keep | Run the `control` arm: if the agent behaves correctly without the change too, the context is dead weight |
 
