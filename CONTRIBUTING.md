@@ -21,6 +21,10 @@ The index (`index.md`) is a router: every row states *when to read* the target, 
 - Types: `docs` is the common case; also `feat`, `fix`, `chore`, `refactor`.
 - Scope: `canon` (or a specific convention like `principles`).
 
+## Pre-push checks
+
+Run the [verifiability matrix](./verifiability.md) methods the change class owes before pushing — for any rule addition, trigger broadening, or routing change, that is `canon:manual`, the cold-spawn behavioral eval `canon:cold-eval` defines. An owed eval is a checklist item, not a remembered obligation.
+
 ## Delivery
 
 - Default branch: `master`.

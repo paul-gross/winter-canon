@@ -119,3 +119,44 @@ The enumerated list reads as complete, so the next author trusts it instead of t
 **Don't.**
 
 - Paste an entire manifest block with every field "as an example" into a file that does not own the schema — the field list is now duplicated, and it is wrong the first time the schema changes.
+
+## Parallel items get parallel structure (`canon:parallel-structure`)
+
+**Rule.** Present a series of parallel items as markdown structure — a list or a table, one item per physical line — never as an enumeration carried inside a single paragraph, sentence, or table cell.
+
+**Why.** Structure makes growth safe and visible: a new item is a new line the diff shows exactly, and a reader needing one item finds it without parsing its siblings. An inline enumeration ratchets the other way — appending to the line is always the edit least likely to break its neighbors, so every edit appends and the container degrades with no structural rule left to fire on it.
+
+**Scope.** The test is the item, not the count: binds any series whose items carry independent detail — their own clauses, assertions, or references — and any open set that grows edit by edit; a short closed series named in passing ("init, provision, and up") stays prose. A set of parallel *choices* takes the table shape `canon:tables-for-options` owns, and a routing table's citation-id column (a hub's Rule ids) stays inline — it is scanned as a set, not read item by item.
+
+**Detect.**
+
+- Inline ordinal markers (`**(1)**`, `(a)`, "first… second…") inside a paragraph or cell.
+- A semicolon-chained series whose items each carry independent detail.
+- A hand-maintained count naming the enumeration's size ("sixteen scenarios").
+- A physical line whose length no single sentence explains.
+
+The fix to prescribe is restructuring into a list or table — never trimming items or wrapping the line.
+
+**Do.**
+
+```markdown
+Scenarios:
+
+- `test_happy_path` — build → review → land
+- `test_review_cycle` — review fails once, findings thread back, then lands
+- `test_escalation` — retries exhaust, the chunk parks for a human
+```
+
+One item per line — a new scenario is a new line, and the list needs no count to maintain.
+
+**Don't.**
+
+*"The suite covers three scenarios: **(1)** `test_happy_path` — build → review → land; **(2)** `test_review_cycle` — review fails once, findings thread back, then lands; **(3)** `test_escalation` — retries exhaust, the chunk parks for a human."*
+
+Appending **(4)** mutates a line whose length the renderer hides, and the "three" in the prose is wrong the moment it lands.
+
+**See also.**
+
+- `canon:semantic-load` in [`./progressive-disclosure.md`](./progressive-disclosure.md) — the overload test this rule gives a shape answer to.
+- `canon:tables-for-options` in [`./progressive-disclosure.md`](./progressive-disclosure.md) — the required shape when the parallel items are a set of choices.
+- `canon:no-hard-wrap` — line length is never fixed by wrapping, only by structure.

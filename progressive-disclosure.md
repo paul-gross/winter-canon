@@ -24,7 +24,7 @@ Each rule follows the slot skeleton owned by [`./rule-shape.md`](./rule-shape.md
 
 ## Split by semantic load, not word count (`canon:semantic-load`)
 
-**Rule.** No numeric length threshold decides structure — not a line count, not a "screenful." A document becomes a hub with routed spokes when a reader after one fact must load substantial unrelated material to reach it, when its routing description needs several independent clauses to cover what it holds, or when its sections can be entered independently without reading the rest. The converse holds too: a long but cohesive contract a reader consumes as a whole stays one file, and a short file mixing unrelated purposes still splits. Size is a symptom, not the test.
+**Rule.** No numeric length threshold decides structure — not a line count, not a "screenful." A document becomes a hub with routed spokes when a reader after one fact must load substantial unrelated material to reach it, when its routing description needs several independent clauses to cover what it holds, or when its sections can be entered independently without reading the rest. The converse holds too: a long but cohesive contract a reader consumes as a whole stays one file, and a short file mixing unrelated purposes still splits. The unit under test is any container a reader must consume whole — a file, a section, a table cell, or a paragraph — not only the file. Size is a symptom, not the test.
 
 **Why.** Length proxies for load but does not equal it: an arbitrary cut severs a thread the reader follows end to end, and a short mixed-purpose file still taxes its reader. Measuring load directly splits exactly the files that tax a reader and leaves the rest alone.
 
@@ -33,6 +33,8 @@ Each rule follows the slot skeleton owned by [`./rule-shape.md`](./rule-shape.md
 **Do.** Ask what a reader seeking one fact must load to reach it. If the answer is "much they don't need," split; if "only the surrounding thread of the same idea," leave it whole.
 
 **Don't.** Split, or refuse to split, on a line count. "Over N lines" is not a reason to break a file, and "under N lines" is not a reason to keep a mixed-purpose one whole.
+
+**See also.** `canon:parallel-structure` in [`./principles.md`](./principles.md) — the shape remedy when the overloaded container is an enumeration inside a line or cell.
 
 ## One leaf, one coherent question (`canon:one-question`)
 
