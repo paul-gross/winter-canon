@@ -32,35 +32,6 @@ State the rule, then the forward-looking reason.
 
 Each frames the current state as a correction to an invisible prior version. Strip the historical clause; what remains is the convention.
 
-## No manual line wrapping (`canon:no-hard-wrap`)
-
-**Rule.** Don't hard-wrap prose. Put one sentence or one paragraph per physical line and let the editor and renderer soft-wrap it; never reflow prose to a fixed column. Scope is prose only — code fences, tables, and YAML metadata blocks keep their own formatting and are exempt.
-
-**Why.** Hard-wrapping makes a one-word edit reflow every line below it, burying the real change in reflow churn. One sentence per line keeps each edit localized to the line it touches.
-
-**Detect.** Prose paragraphs whose physical lines break mid-sentence at a consistent column — lines ending on an unpunctuated word with the sentence continuing on the next line.
-
-**Do.**
-
-```
-The reviewer reads the harness conventions before reviewing any agent-facing markdown, so a new rule reaches it through the same discovery chain a future author will traverse.
-Each sentence sits on its own physical line; the editor soft-wraps it to the viewport.
-```
-
-One sentence per physical line — editing a word touches only that line.
-
-**Don't.**
-
-```
-The reviewer reads the harness conventions before reviewing any
-agent-facing markdown, so a new rule reaches it through the same
-discovery chain a future author will traverse. Each sentence is
-hard-wrapped at a fixed column, so editing one word reflows every
-line beneath it.
-```
-
-Prose reflowed to a fixed column — a one-word edit churns every wrapped line below it.
-
 ## One canonical owner per fact (`canon:one-owner`)
 
 **Rule.** Every behavioral rule, schema field, default, protocol requirement, or operational invariant has exactly one authoritative document — its canonical owner. Any other document that needs the fact links to the owner and may state *why* the reader should follow the link, but never restates the detail. When two files describe the same fact, exactly one is canonical and the rest are pointers; "for convenience" is not a second owner.
@@ -159,4 +130,3 @@ Appending **(4)** mutates a line whose length the renderer hides, and the "three
 
 - `canon:semantic-load` in [`./progressive-disclosure.md`](./progressive-disclosure.md) — the overload test this rule gives a shape answer to.
 - `canon:tables-for-options` in [`./progressive-disclosure.md`](./progressive-disclosure.md) — the required shape when the parallel items are a set of choices.
-- `canon:no-hard-wrap` — line length is never fixed by wrapping, only by structure.
