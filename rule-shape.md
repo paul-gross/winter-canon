@@ -7,7 +7,7 @@ A consuming harness may adopt the same shape for its own conventions and gets th
 ## Rule
 
 Every canon rule is written in the slot skeleton below, carries a stable `canon:<slug>` id in its heading, and uses one of the two granularities.
-A file that is not a rule file — a procedure or a taxonomy (see [File kinds](#file-kinds)) — is exempt from the skeleton but still carries a file-level id and an index row.
+A file that is not a rule file — a procedure or a taxonomy (see [File kinds](#file-kinds)) — is exempt from the skeleton but still carries a file-level id and a routing row.
 Any other deviation from the skeleton is drift for a reviewer to flag, not a local style choice.
 
 ### The slots
@@ -29,9 +29,9 @@ A rule whose violation has no expressible `Detect` signature is suspect: a rule 
 ### Stable ids
 
 Every rule carries an id of the form `canon:<slug>` in its heading — in the `##` heading at rule-per-section granularity, in the `#` title at file-per-rule granularity.
-The id is the citation handle: cross-references and reviewer findings cite the id, and the canon index's id column resolves each id to the file that owns it.
+The id is the citation handle: cross-references and reviewer findings cite the id, and the id column of the canon routing table ([`./routing.md`](./routing.md)) resolves each id to the file that owns it.
 Ids are stable — citations depend on them, so a rename is a breaking change made only deliberately.
-Adding, renaming, or removing a rule updates the index's id column in the same change.
+Adding, renaming, or removing a rule updates the routing table's id column in the same change.
 
 ### Two granularities
 
@@ -48,7 +48,7 @@ Not every canon file states a rule. Three kinds, three shapes:
 | Procedure file | Its own steps, schemas, and decision tables; `Rule` and `Why` open it to state the obligation and its reason, `Don't` closes with the failure modes | `Do` and `Detect` — the worked steps and examples are the positive form |
 | Taxonomy file | Names and defines a set, as a definition list or table, with a `Why` for the set's membership | The skeleton — a definition has no imperative to slot |
 
-A procedure or taxonomy file still carries a file-level `canon:<slug>` id in its title and a row in the index.
+A procedure or taxonomy file still carries a file-level `canon:<slug>` id in its title and a row in the routing table.
 
 ## Why
 
@@ -60,7 +60,7 @@ Declaring the exempt kinds keeps the skeleton's promise honest: a reader who kno
 - A rule section missing a required slot, or carrying unlabeled normative paragraphs between the slots.
 - A `Why` running past two sentences, or re-arguing the rule instead of giving rationale that generalizes.
 - A `Do` that paraphrases the `Rule` instead of showing an artifact.
-- A rule heading without a `canon:<slug>` id; a cross-reference quoting a heading title where an id exists; an id present in a heading but missing from the index's id column.
+- A rule heading without a `canon:<slug>` id; a cross-reference quoting a heading title where an id exists; an id present in a heading but missing from the routing table's id column.
 - The skeleton forced onto a stepwise procedure or a definitional taxonomy — or a single enforceable rule hiding inside a procedure or taxonomy shape where no `Rule` slot names it.
 
 ## Do

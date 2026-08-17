@@ -147,4 +147,4 @@ Note the run count and the tally alongside the change so the next author knows t
 ## See also
 
 - `canon:no-retro` in [`./principles.md`](./principles.md) — concrete precedent: an enforcement rule whose efficacy depends on a paired reviewer surfacing the anti-pattern from fresh text.
-- [`./index.md`](./index.md) — the discovery chain a cold agent traverses to reach a leaf convention.
+- [`./index.md`](./index.md) → [`./routing.md`](./routing.md) — the discovery chain a cold agent traverses to reach a leaf convention.
