@@ -32,6 +32,30 @@ State the rule, then the forward-looking reason.
 
 Each frames the current state as a correction to an invisible prior version. Strip the historical clause; what remains is the convention.
 
+## No process references (`canon:no-process-refs`)
+
+**Rule.** Don't cite the process that produced the content — issue, ticket, and PR numbers, tracker URLs, review-finding ids (`M1`, `C4`), or review-round vocabulary. State the convention; a reader needs what it is, never which ticket asked for it or which finding it answers.
+
+**Why.** A process id resolves only inside the system that issued it, and only for as long as that system keeps it — a finding id is scoped to one review round and dead the moment the round closes, and a tracker number is a lookup no future agent will perform mid-task. The token is loaded on every read and returns nothing.
+
+**Exception.** Documents whose subject *is* the process keep their references — a changelog, a migration note, an issue-writing convention showing the reference notation, a review procedure defining its own finding-id vocabulary.
+
+**Detect.** Grep for `#<digits>`, `GH-`, `closes`/`fixes #`, tracker hostnames, bare `M<digits>` / `C<digits>` tokens, and the phrases *"per the review"*, *"as requested in"*, *"addresses finding"*, *"round 2"*. The fix is deletion, not rephrasing: strip the citation and check whether the sentence still states a convention — if it doesn't, the sentence was provenance and goes with it.
+
+**Do.**
+
+- *"Each prompt is inlined so a renumbered sibling skill can't silently break it."*
+
+**Don't.**
+
+- *"Inlined per #218 (review finding M2) so a renumbered sibling skill can't break it."*
+
+The citation names a review round the reader cannot open and a ticket they will not fetch; the convention underneath it stands on its own.
+
+**See also.**
+
+- `canon:no-retro` above — the same delete-the-history fix, applied to the doc's own change history rather than the tracker's.
+
 ## One canonical owner per fact (`canon:one-owner`)
 
 **Rule.** Every behavioral rule, schema field, default, protocol requirement, or operational invariant has exactly one authoritative document — its canonical owner. Any other document that needs the fact links to the owner and may state *why* the reader should follow the link, but never restates the detail. When two files describe the same fact, exactly one is canonical and the rest are pointers; "for convenience" is not a second owner.

@@ -6,7 +6,7 @@ Every rule carries a stable `canon:<slug>` id ([`./rule-shape.md`](./rule-shape.
 
 | File | When to read | Rule ids |
 |------|--------------|----------|
-| [`./principles.md`](./principles.md) | Cross-cutting principles for any agent-facing markdown file — read before authoring or editing one | `canon:no-retro` · `canon:one-owner` · `canon:point-dont-duplicate` · `canon:minimal-examples` · `canon:parallel-structure` |
+| [`./principles.md`](./principles.md) | Cross-cutting principles for any agent-facing markdown file — read before authoring or editing one | `canon:no-retro` · `canon:no-process-refs` · `canon:one-owner` · `canon:point-dont-duplicate` · `canon:minimal-examples` · `canon:parallel-structure` |
 | [`./rule-shape.md`](./rule-shape.md) | Adding, reshaping, or reviewing a convention rule — the slot skeleton, the stable-id scheme, and which file kinds are exempt | `canon:rule-shape` |
 | [`./progressive-disclosure.md`](./progressive-disclosure.md) | Deciding how a topic is split across files and how its hubs route — read when shaping or restructuring a multi-file topic | `canon:hub-and-spoke` · `canon:semantic-load` · `canon:one-question` · `canon:row-is-router` · `canon:pure-hubs` · `canon:hub-vs-deep-link` · `canon:tables-for-options` · `canon:index-scrutiny` |
 | [`./organization.md`](./organization.md) | Deciding where a fact or file belongs and whether a new document is warranted — read when placing, naming, or admitting an agent-facing file, or auditing a directory's contents against its purpose | `canon:by-reader-task` · `canon:truthful-names` · `canon:admission-test` · `canon:auto-load-tax` |
