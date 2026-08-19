@@ -1,29 +1,50 @@
 # Contributing
 
-`winter-canon` is a docs repo — universal harness conventions that the rest of an agentic ecosystem reads. Changes target a convention file directly.
+`winter-canon` is a docs repo — universal harness conventions that the rest of an agentic ecosystem reads. Changes
+target a convention file directly.
 
 ## The admission bar
 
-A convention earns a place in the canon only if it is true of *every* harness, independent of language, project, or workflow. If a rule only holds for one language's code, one project's architecture, or one team's workflow, it belongs in the consuming harness, not here. When in doubt, keep it out — the canon's value is that a reader can trust every rule in it applies to them.
+A convention earns a place in the canon only if it is true of *every* harness, independent of language, project, or
+workflow. If a rule only holds for one language's code, one project's architecture, or one team's workflow, it belongs
+in the consuming harness, not here. When in doubt, keep it out — the canon's value is that a reader can trust every rule
+in it applies to them.
 
 ## Voice and shape
 
-Each convention follows the slot skeleton, stable-id scheme, and file-kind exemptions owned by [`rule-shape.md`](./rule-shape.md) (`canon:rule-shape`), in a terse, code-first voice. Read it and [`principles.md`](./principles.md) — the authoring rules this repo holds itself to — before editing any convention here. Match the shape of the closest existing sibling.
+Each convention follows the slot skeleton, stable-id scheme, and file-kind exemptions owned by
+[`rule-shape.md`](./rule-shape.md) (`canon:rule-shape`), in a terse, code-first voice. Read it and
+[`principles.md`](./principles.md) — the authoring rules this repo holds itself to — before editing any convention here.
+Match the shape of the closest existing sibling.
 
-The routing table (`routing.md`) is the router: every row states *when to read* the target, never *what is inside* it. Adding, moving, or removing a convention file updates its routing row in the same change. `index.md` is the auto-loaded entry point — a two-line descriptor that points at the routing table and carries nothing else (`canon:auto-load-tax`).
+The routing table (`routing.md`) is the router: every row states *when to read* the target, never *what is inside* it.
+Adding, moving, or removing a convention file updates its routing row in the same change. `index.md` is the auto-loaded
+entry point — a two-line descriptor that points at the routing table and carries nothing else (`canon:auto-load-tax`).
 
 ## Commit messages
 
 [Conventional Commits](https://www.conventionalcommits.org/) with a scope:
 
-    <type>(<scope>): <description>
+```text
+<type>(<scope>): <description>
+```
 
 - Types: `docs` is the common case; also `feat`, `fix`, `chore`, `refactor`.
 - Scope: `canon` (or a specific convention like `principles`).
 
 ## Pre-push checks
 
-Run the [verifiability matrix](./verifiability.md) methods the change class owes before pushing — for any rule addition, trigger broadening, or routing change, that is `canon:manual`, the cold-spawn behavioral eval `canon:cold-eval` defines. An owed eval is a checklist item, not a remembered obligation.
+Run the [verifiability matrix](./verifiability.md) methods the change class owes before pushing — for any rule addition,
+trigger broadening, or routing change, that is `canon:manual`, the cold-spawn behavioral eval `canon:cold-eval` defines.
+An owed eval is a checklist item, not a remembered obligation.
+
+`canon:format` and `canon:markdown-lint` are owed by **every** change, including a copyedit — they are the mechanical
+style gate every file here is held to, and one of them writes its own fix:
+
+```bash
+dprint check          # dprint fmt to apply
+rumdl check .         # rumdl check . --fix for the autofixable subset
+```
 
 ## Delivery
 
