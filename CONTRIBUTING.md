@@ -18,8 +18,9 @@ Each convention follows the slot skeleton, stable-id scheme, and file-kind exemp
 Match the shape of the closest existing sibling.
 
 The routing table (`routing.md`) is the router: every row states *when to read* the target, never *what is inside* it.
-Adding, moving, or removing a convention file updates its routing row in the same change. `index.md` is the auto-loaded
-entry point — a two-line descriptor that points at the routing table and carries nothing else (`canon:auto-load-tax`).
+Adding, moving, or removing a convention file updates its routing row in the same change. `index.md` is the entry point
+a consuming harness links or imports — a two-line descriptor that points at the routing table and carries nothing else
+(`canon:auto-load-tax`).
 
 ## Commit messages
 

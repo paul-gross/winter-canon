@@ -1,6 +1,12 @@
 name = "winter-canon"
 prefix = "wc"
 
+# The entry point is a router into the convention files, and those conventions
+# only bind while the task is authoring or reviewing agent-facing markdown or a
+# harness — so a session pays one routing line and follows it when it applies.
+description = "Universal conventions for agent-facing markdown and harness structure — read when authoring or reviewing either, or resolving a cited `canon:` id."
+load = "lazy"
+
 # winter-canon is the bottom governance layer: the universal harness conventions
 # every other module and consuming harness builds on. It depends on nothing, so
 # it declares no `requires` — any reference *to* winter-canon keeps it strictly
