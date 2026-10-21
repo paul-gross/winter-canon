@@ -134,8 +134,8 @@ re-synced by hand when the target changes — instead of naming when to go or wh
   | ./principles.md | Cross-cutting principles for any agent-facing markdown file — read before authoring or editing one |
   ```
 
-- `CLAUDE.md` navigation row described by destination: `| Worktree git operations | context/worktree-ops.md |` — names
-  where to go, not the steps the target lists.
+- `CLAUDE.md` navigation row described by destination: `| Worktree git operations | context/winter/worktree-ops.md |` —
+  names where to go, not the steps the target lists.
 
 Describe the destination; let the reader follow the link for the contents.
 

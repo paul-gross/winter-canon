@@ -94,8 +94,8 @@ index.
 reachable from a teardown cue.
 
 - **cue** — "Tear down the gamma environment."
-- **via** — workspace `CLAUDE.md` §"Tearing down a feature environment" → `context/worktree-ops.md` §"Destroying a
-  feature environment".
+- **via** — workspace `CLAUDE.md` §"Tearing down a feature environment" → `context/winter/worktree-ops.md` §"Destroying
+  a feature environment".
 - **reached** — the agent opens the destroy section.
 - **behaved** — it runs `winter ws destroy gamma` rather than `rm -rf gamma/`.
 - **control** — without the cross-link, the agent reaches for `rm -rf gamma/` and orphans extension state.
