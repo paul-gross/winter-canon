@@ -2,8 +2,7 @@
 
 The slot skeleton every canon rule is written in — the slots, their semantics, the stable-id scheme, and the file kinds
 that are exempt. This file owns the format; the rule files declare conformance by pointing here, never by restating the
-skeleton. A consuming harness may adopt the same shape for its own conventions and gets the same scanability and
-enforceability when it does.
+skeleton. The shape is the canon's own house format and binds nothing outside this repo.
 
 ## Rule
 
@@ -63,6 +62,11 @@ A fixed skeleton lets an agent read only the slot its task needs — `Rule` to c
 an edge case — instead of parsing free prose to find the norm. Declaring the exempt kinds keeps the skeleton's promise
 honest: a reader who knows a file's kind knows exactly which structure to expect.
 
+## Scope
+
+The canon's own files only. The canon's other rules bind every covered repo, but this one does not: a covered repo
+writes its conventions in whatever shape it keeps, and a reviewer never holds one to this skeleton.
+
 ## Detect
 
 - A rule section missing a required slot, or carrying unlabeled normative paragraphs between the slots.
@@ -70,6 +74,7 @@ honest: a reader who knows a file's kind knows exactly which structure to expect
 - A `Do` that paraphrases the `Rule` instead of showing an artifact.
 - A rule heading without a `canon:<slug>` id; a cross-reference quoting a heading title where an id exists; an id
   present in a heading but missing from the routing table's id column.
+- The skeleton demanded of a covered repo's conventions, or a covered repo's rule flagged for lacking a slot.
 - The skeleton forced onto a stepwise procedure or a definitional taxonomy — or a single enforceable rule hiding inside
   a procedure or taxonomy shape where no `Rule` slot names it.
 
