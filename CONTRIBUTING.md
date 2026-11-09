@@ -13,9 +13,9 @@ in it applies to them.
 ## Voice and shape
 
 Each convention follows the slot skeleton, stable-id scheme, and file-kind exemptions owned by
-[`rule-shape.md`](./rule-shape.md) (`canon:rule-shape`), in a terse, code-first voice. Read it and
-[`principles.md`](./principles.md) — the authoring rules this repo holds itself to — before editing any convention here.
-Match the shape of the closest existing sibling.
+[`rule-shape.md`](./rule-shape.md) (`canon:rule-shape`), in the voice [`voice.md`](./voice.md) sets for all governance
+context. Read those and [`principles.md`](./principles.md) — the authoring rules this repo holds itself to — before
+editing any convention here. Match the shape of the closest existing sibling.
 
 The routing table (`routing.md`) is the router: every row states *when to read* the target, never *what is inside* it.
 Adding, moving, or removing a convention file updates its routing row in the same change. `index.md` is the entry point

@@ -7,9 +7,9 @@ skeleton. The shape is the canon's own house format and binds nothing outside th
 ## Rule
 
 Every canon rule is written in the slot skeleton below, carries a stable `canon:<slug>` id in its heading, and uses one
-of the two granularities. A file that is not a rule file — a procedure or a taxonomy (see [File kinds](#file-kinds)) —
-is exempt from the skeleton but still carries a file-level id and a routing row. Any other deviation from the skeleton
-is drift for a reviewer to flag, not a local style choice.
+of the two granularities. A file that is not a rule file — a procedure, a taxonomy, or a voice (see
+[File kinds](#file-kinds)) — is exempt from the skeleton but still carries a file-level id and a routing row. Any other
+deviation from the skeleton is drift for a reviewer to flag, not a local style choice.
 
 ### The slots
 
@@ -46,15 +46,17 @@ deliberately. Adding, renaming, or removing a rule updates the routing table's i
 
 ## File kinds
 
-Not every canon file states a rule. Three kinds, three shapes:
+Not every canon file states a rule. Four kinds, four shapes:
 
 | Kind           | Shape                                                                                                                                               | Exempt from                                                             |
 | -------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
 | Rule file      | The slot skeleton, at either granularity                                                                                                            | —                                                                       |
 | Procedure file | Its own steps, schemas, and decision tables; `Rule` and `Why` open it to state the obligation and its reason, `Don't` closes with the failure modes | `Do` and `Detect` — the worked steps and examples are the positive form |
 | Taxonomy file  | Names and defines a set, as a definition list or table, with a `Why` for the set's membership                                                       | The skeleton — a definition has no imperative to slot                   |
+| Voice file     | Prose describing the writer to be and the reader they write for, with a passage in the voice and what it covers                                     | The skeleton — a voice is a register to write in, not a norm to lint    |
 
-A procedure or taxonomy file still carries a file-level `canon:<slug>` id in its title and a row in the routing table.
+A procedure or taxonomy file still carries a file-level `canon:<slug>` id in its title, a voice file one in each section
+heading, and each a row in the routing table.
 
 ## Why
 
