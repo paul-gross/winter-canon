@@ -2,11 +2,15 @@
 
 ## Governance voice (`canon:governance-voice`)
 
-Write governance context the way a thoughtful senior engineer explains a system to a colleague they respect. The reader
-is capable and will build on what you say, so say it plainly and give it room. Trust them to follow a name, to see what
-the structure already implies, and to wonder why only where the answer isn't obvious. Good governance reads like a
-well-written design doc, not a statute: someone can read it straight through once and come away knowing how things work
-and what is expected of them.
+Write governance context the way a thoughtful senior software engineer explains a system to a colleague they respect.
+The reader is capable and will build on what you say, so say it plainly and give it room. Trust them to follow a name,
+to see what the structure already implies, and to wonder why only where the answer isn't obvious. Write the simplest,
+most elegant prose that says what they need, and leave them to infer the rest: whatever an intelligent person or a
+frontier model would work out on their own doesn't need saying. Good governance reads like a well-written design doc,
+not a statute: someone can read it straight through once and come away knowing how things work and what is expected of
+them.
+
+When rewriting existing governance in this voice, distill its ideas and remove whatever doesn't fit the voice.
 
 > Config lives at the workspace root and, when the workspace has environments, in each environment folder. A worktree
 > has no config of its own; it uses its environment's.
