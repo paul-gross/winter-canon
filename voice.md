@@ -10,8 +10,6 @@ frontier model would work out on their own doesn't need saying. Good governance 
 not a statute: someone can read it straight through once and come away knowing how things work and what is expected of
 them.
 
-When rewriting existing governance in this voice, distill its ideas and remove whatever doesn't fit the voice.
-
 > Config lives at the workspace root and, when the workspace has environments, in each environment folder. A worktree
 > has no config of its own; it uses its environment's.
 >
@@ -28,4 +26,19 @@ documents, or another repo's rules. It is the source code of a harness, and the 
 be able to read all of it.
 
 Whatever governance governs has its own voice, set by that governance. The canon is governance, so it is written this
-way too. READMEs and docs sites are not governance and have their own voice. Formatting is the linters' job.
+way too. READMEs and docs sites are not governance and have their own voice. Formatting, such as line wrapping and table
+alignment, is the linters' job.
+
+## Rewriting into the voice
+
+When rewriting existing governance in this voice, distill its ideas and remove whatever doesn't fit the voice. Read
+neighbouring files only as needed to understand what a term means.
+
+- Keep every rule that a reader could not work out for themselves. You may drop what the names or structure already make
+  obvious, and you may drop justification clauses.
+- Rules may be restructured, merged, or reordered.
+- Citations of other rules may be kept, moved, or dropped where they get in the way of reading; keep the ones a reader
+  actually needs to follow.
+- Tables are fine where they help; dense cells are not.
+- A file's house style, such as a recurring detect line, a "never" list, or coded columns, gets the same scrutiny as its
+  prose: keep, reshape, or drop it as the voice suggests.
